@@ -4,7 +4,6 @@ from app.db.base import Base
 from typing import List
 from datetime import datetime
 from app.db.models.product import Product
-from app.db.models.appointment import Appointment
 from app.db.models.services_bike import ServiceBike
 
 class User(Base):
@@ -16,8 +15,7 @@ class User(Base):
 
     # Relaciones
     roles: Mapped[List["UserRole"]] = relationship("UserRole", back_populates="user", cascade="all, delete-orphan")
-    appointments: Mapped[List["Appointment"]] = relationship("Appointment", back_populates="user")
-    service_bikes: Mapped[List["ServiceBike"]] = relationship("ServiceBike", back_populates="user")  # <-- nueva relación
+    service_bikes: Mapped[List["ServiceBike"]] = relationship("ServiceBike", back_populates="user")  
 
 
 class Role(Base):
