@@ -1,5 +1,6 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import List, Optional
+from app.schemas.role import RoleRead
 
 class UserBase(BaseModel):
     auth0_sub: str
@@ -13,5 +14,5 @@ class UserUpdate(BaseModel):
 
 class UserRead(UserBase):
     id: int
-    class Config:
-        orm_mode = True
+    roles: List[RoleRead] = []
+    model_config = ConfigDict(from_attributes=True)

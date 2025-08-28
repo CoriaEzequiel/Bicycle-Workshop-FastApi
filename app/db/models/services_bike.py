@@ -5,7 +5,6 @@ from datetime import datetime
 from enum import Enum as PyEnum
 from typing import List
 from app.db.base import Base
-from app.db.models.user import User
 
 class ServiceStatus(PyEnum):
     PENDING = "pending"

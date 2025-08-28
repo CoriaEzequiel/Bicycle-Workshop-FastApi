@@ -1,14 +1,10 @@
 from fastapi import FastAPI
-from app.api import products, service_bikes  # rutas
+from app.api.routes import router as api_router
 
-app = FastAPI(title="Bicicletos API")
+app = FastAPI(title="Bicicleteria API")
 
-
-
-# routers
-app.include_router(products.router, prefix="/products", tags=["Products"])
-app.include_router(service_bikes.router, prefix="/service_bikes", tags=["ServiceBikes"])
+app.include_router(api_router, prefix="/api")
 
 @app.get("/")
 async def root():
-    return {"message": "Bicicletos API funcionando "}
+    return {"message": "Bicicleteria API is running"}
